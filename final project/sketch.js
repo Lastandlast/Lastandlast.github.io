@@ -1,4 +1,4 @@
-// Project Title  s
+// Project Title  
 // Your Name
 // Date
 //
