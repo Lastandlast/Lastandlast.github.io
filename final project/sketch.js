@@ -12,4 +12,7 @@ function setup() {
 
 function draw() {
   background(0);
-}sadasdasdasd
+}
+function startgame(){
+  for x += 1 ;x = 2
+}
