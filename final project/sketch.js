@@ -4,17 +4,27 @@
 //
 // Extra for Experts:
 // - describe what you did to take this project "above and beyond"
+let img;
+function preload(){
+  img = loadImage('assets/oceanjpg.jpg')
 
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
 }
-function start(){
-  
-}fdsf
+
 function draw() {
-  background(0);
+  background(255);
+  image(img, 0, 0,windowWidth, windowHeight);
 }
-function startgame(){
-  for x += 1 ;x = 2
+
+
+class game{
+  constructor (){
+    this.canvas = null;
+    this.context = null;
+    this.score = 0;
+    this.init();
+  }
 }
