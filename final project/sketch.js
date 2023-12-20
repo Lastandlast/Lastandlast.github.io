@@ -34,12 +34,13 @@ class Hook{
     this.target = createVector(x, y);
     this.vel = createVector(0, 0);
     this.state = 0;
-    
+    this.size = ;
   }
   display (){
-    image(hookImage,this.position.x,this.position.y);
+    image(hookImage,this.position. x,this.position.y);
     
   }
+  
 
   
 }
