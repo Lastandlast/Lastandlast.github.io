@@ -24,6 +24,8 @@ function draw() {
   hook.display();
 }
 
+ 
+
 class Hook {
   constructor(x, y) {
     this.position = createVector(x, y);
@@ -32,7 +34,15 @@ class Hook {
     this.state = 0;
     this.size = 50;
     this.angle = 0;
+    if (mouseButton === RIGHT){
+      this.position = createVector(x+1,y+2); 
+    }
+    
+  
   }
+
+ 
+
 
   move() {
     
@@ -52,4 +62,3 @@ class Hook {
     imageMode(CORNER);
   }
 }
-
