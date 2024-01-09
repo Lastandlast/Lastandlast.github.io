@@ -23,9 +23,20 @@ function draw() {
   hook.move();
   hook.display();
 }
-
- 
-
+class Treasure{
+  constructor(x,y){
+    this.positon = createVector(x,y)
+    this.target = createVector(x, y);
+    this.vel = createVector(0, 0);
+    this.state = 0;
+    this.size = 50;
+    this.angle = 0;
+   }
+    display(){
+      line(TX, TY.this.position.x, this.position.y)
+      imageMode(CENTER);
+    }
+  }
 class Hook {
   constructor(x, y) {
     this.position = createVector(x, y);
@@ -34,15 +45,7 @@ class Hook {
     this.state = 0;
     this.size = 50;
     this.angle = 0;
-    if (mouseButton === RIGHT){
-      this.position = createVector(x+1,y+2); 
-    }
-    
-  
   }
-
- 
-
 
   move() {
     
