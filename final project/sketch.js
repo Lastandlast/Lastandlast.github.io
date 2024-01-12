@@ -6,6 +6,7 @@ let subX = 950;
 let subY = 150;
 let treasure;
 let treasureOB;
+let treasures = []
 
 function preload() {
   ocean = loadImage('assets/oceanjpg.jpg');
@@ -14,10 +15,13 @@ function preload() {
   treasure = loadImage('assets/Treasure.png');
 }
 
-function setup() {
+function setup() {        
   createCanvas(windowWidth, windowHeight);
   hook = new Hook(950, 250);
   treasureOB = new Treasure(100, 100)
+  for (let i = 0; i <10; i ++){
+    treasures.push(new Treasure(random(width), random(height)));
+  }
 }
 
 function draw() {
@@ -26,7 +30,9 @@ function draw() {
   image(submarine, 800, -25, 300, 250);
   hook.move();
   hook.display();
-  treasureOB.display();
+  for (let i = 0; i < treasures.length; i++) {
+    treasures[i].display();
+}
 }
 
 class Treasure {
@@ -35,9 +41,8 @@ class Treasure {
     
   }
   display() {
-    image(treasure, 600, 700, this.position.x, this.position.y);
-    image(treasure, 100, 500, this.position.x, this.position.y);
-    image(treasure, 200, 300, this.position.x, this.position.y);
+    image(treasure, this.position.x, this.position.y, 50, 50);
+
     
   }
 }
@@ -58,17 +63,22 @@ class Hook {
   }
   dive(){
     this.state = 1;
+    this.vel = p5.Vector.fromAngle(this.angle);
+    this.vel.mult(5);
   }
 
   move() {
     if (this.state === 0) {
 
-      this.angle = radians(map(sin(frameCount * 0.02), -1, 1, 0, 180));
+      this.angle = radians(map(sin(frameCount * 0.03), -1, 1, 0, 180));
       this.position.x = subX + cos(this.angle) * 100;
       this.position.y = subY + sin(this.angle) * 100;
     } else if (this.state === 1) {
-      this.position.y += 4;
+      this.position.add(this.vel);
       if (this.position.y > windowHeight) {
+        this.state = 0;
+      }
+      if (this.position.x > windowWidth) {
         this.state = 0;
       }
     }
@@ -85,6 +95,5 @@ class Hook {
     image(hookImage, 0, 0, this.size, this.size);
     pop()
     imageMode(CORNER);
-   
   }
 }
