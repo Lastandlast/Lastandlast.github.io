@@ -31,14 +31,18 @@ function draw() {
 
 class Treasure {
   constructor(x, y) {
-    this.position = createVector(x, y)
+    this.position = createVector(x, y);
+    
   }
   display() {
-    image(treasure, this.position.x, this.position.y);
+    image(treasure, 600, 700, this.position.x, this.position.y);
+    image(treasure, 100, 500, this.position.x, this.position.y);
+    image(treasure, 200, 300, this.position.x, this.position.y);
+    
   }
 }
-function keyspacepress(){
-  if (key === ' '){
+function keyTyped() {
+  if (key === ' ') {
     hook.dive();
   }
 }
@@ -57,7 +61,7 @@ class Hook {
   }
 
   move() {
-    if (this.state === 0){
+    if (this.state === 0) {
 
       this.angle = radians(map(sin(frameCount * 0.02), -1, 1, 0, 180));
       this.position.x = subX + cos(this.angle) * 100;
@@ -67,7 +71,6 @@ class Hook {
       if (this.position.y > windowHeight) {
         this.state = 0;
       }
-
     }
   }
   
